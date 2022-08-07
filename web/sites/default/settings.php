@@ -806,3 +806,4 @@ $databases['default']['default'] = array (
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 );
 $settings['config_sync_directory'] = 'sites/default/files/config_0sXwHkw1DXAfokP1T33ywoZ0ukpss9MYQyEpYspiTmCvfCWVUL154ZQchhlYpRskI7JQeYjpcg/sync';
+$settings['block_interest_cohort'] = FALSE;
