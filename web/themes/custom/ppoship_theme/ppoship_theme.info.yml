@@ -4,7 +4,7 @@ description: 'PPOSHIP theme.'
 package: Other
 core_version_requirement: ^8 || ^9
 libraries:
-    - ppoship/global-styling
+    - ppoship_theme/global-styling
 
 base theme: classy
 regions:
