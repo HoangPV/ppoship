@@ -1,0 +1,319 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{% set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'page-node-type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+] %}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+    <head-placeholder token="{{ placeholder_token }}">
+        <title>{{ head_title|safe_join(' | ') }}</title>
+        <css-placeholder token="{{ placeholder_token }}">
+            <js-placeholder token="{{ placeholder_token }}">
+                </head>
+<body{{ attributes.addClass(body_classes) }}>
+<div id="vnt-wrapper">
+    <div id="vnt-container">
+        <div id="vnt-header">
+            <div class="wrapper">
+                <div class="logo"><h1><a onmousedown="return rwt(this,'advertise',4)" href='trang-chu.html'
+                                         target='_self' title='ToànThắng Shipping'><img src='logo_congty_version_33.jpg'
+                                                                                        width='200'
+                                                                                        alt='ToànThắng Shipping'
+                                                                                        class='png'/></a></h1></div>
+                <div class="headerTools">
+                    <div class="rowHeader hidden-sm hidden-xs">
+                        <div class="boxTop">
+                            <div class="title fa-phone">Hỗ trợ 24/7</div>
+
+                            <div class="cont">0963 211 311</div>
+                        </div>
+
+                        <div class="boxTop">
+                            <div class="title fa-clock-o">Giờ làm việc</div>
+
+                            <div class="cont">08:30 - 17:00</div>
+
+                            <div class="cont">23:31 LT, GMT+7| VN</div>
+                        </div>
+
+                        <div class="boxTop">
+                            <div class="title fa-envelope-o">Email:</div>
+
+                            <div class="cont"><a href="mailto:info@toanthangship.com">info@toanthangship.com</a></div>
+                        </div>
+
+                        <div class="boxTop">
+                            <div class="languageTop">
+                                <ul>
+                                    <li class='active'><a href="trang-chu.html"><img src="flag-vn.html"
+                                                                                     alt="Tiếng Việt"/><span>Tiếng Việt</span></a>
+                                    </li>
+                                    <li><a href="main-2.html"><img src="flag-en.jpg" alt="English"/><span>English</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="calc_cang"><a href="cost.html"><span>DỰ TÍNH PDA</span></a></div>
+                        </div>
+                    </div>
+                    <div class="rowHeader hidden-sm hidden-xs">
+                        <div class="menuTop">
+                            <ul>
+                                <li class="home current"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li><a href="gioi-thieu.html" target="_self">Giới thiệu</a></li>
+                                <li><a href="dich-vu.html" target="_self">Dịch vụ</a>
+                                    <ul>
+                                        <li><a href="van-tai-bien-hang-roi-hang-xa.html" target="_self"><span>Vận tải biển hàng rời, hàng xá</span></a>
+                                        </li>
+                                        <li><a href="thue-tau-moi-gioi-hang-hai.html" target="_self"><span>Thuê tàu, môi giới hàng hải</span></a>
+                                        </li>
+                                        <li><a href="dai-ly-hang-hai.html"
+                                               target="_self"><span>Đại lý hàng hải</span></a></li>
+                                        <li><a href="dich-vu-logistics-du-an.html" target="_self"><span>Dịch vụ logistics</span></a>
+                                        </li>
+                                        <li><a href="khai-thac-quan-ly-tau.html" target="_self"><span>Khai thác, quản lý tàu</span></a>
+                                        </li>
+                                        <li><a href="dich-vu-mua-ban-tau-bien.html" target="_self"><span>Dịch vụ mua bán tàu biển</span></a>
+                                        </li>
+                                        <li><a href="mua-ban-hang-nong-san.html" target="_self"><span>Mua bán hàng nông sản</span></a>
+                                        </li>
+                                        <li><a href="van-chuyen-hang-di-campuchia.html" target="_self"><span>Vận chuyển hàng đi Campuchia</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="lich-tau-mo.html" target="_self">LỊCH TÀU MỞ</a></li>
+                                <li><a href="lich-xep-hang.html" target="_self">LỊCH XẾP HÀNG</a></li>
+                                <li><a href="thuong-mai.html" target="_self">Thương mại</a></li>
+                                <li><a href="tin-tuc.html" target="_self">Tin tức</a></li>
+                                <li><a href="lien-he.html" target="_self">Liên hệ</a></li>
+                            </ul>
+                        </div>
+                        <div class="searchTop">
+                            <div class="icon"><span class="iconSFrm">
+                                <i class="fa fa-search"></i>
+                                <i class="fa fa-times"></i>
+                            </span></div>
+                            <div class="popup">
+
+                                <script>
+                                    function check_search(f) {
+                                        var key_default = "Từ khóa";
+                                        var keyword = f.keyword.value;
+                                        var key_len = f.keyword.value.length;
+                                        if ((keyword == key_default) || (keyword == '')) {
+                                            alert("Vui lòng nhập từ khóa");
+                                            f.keyword.focus();
+                                            return false;
+                                        }
+                                        if (key_len < 2) {
+                                            alert("Từ khóa tới thiểu là 2 ký tự");
+                                            f.keyword.focus();
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+                                </script>
+
+                                <form id="formSearch" name="formSearch" method="GET"
+                                      action="https://www.toanthangship.com/vn/tim-kiem.html/"
+                                      onSubmit="return check_search(this);" class="box_search">
+                                    <input name="keyword" id="keyword" type="text" class="text_search" value=""
+                                           placeholder="Từ khóa"/>
+                                    <button type="submit">
+                                        <span><i class="ic-search fa fa-search"></i></span>
+                                    </button>
+                                </form>
+                                <div class="ajax_search"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="languageMobile hidden-lg hidden-md">
+                        <div class="icon"><img src="flag-en.jpg" alt="English"><a
+                                    href="javascript:;"><span>en</span></a></div>
+                    </div>
+                    <div class="menu_mobile hidden-lg hidden-md">
+                        <div class="icon_menu">Menu</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="vnt-footer">
+            <div class="footerMain">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="boxBot">
+                                <div class="title">CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ VẬN TẢI BIỂN TOÀNTHẮNG</div>
+                                <div class="content">
+                                    <div class="addressFoot">
+                                        <ul>
+                                            <li class="fa-home">Tầng 1, số 7, đường số 14, Khu đô thị mới Him Lam,
+                                                Phường Tân Hưng, Quận 7, TP Hồ Chí Minh.
+                                            </li>
+                                            <li class="fa-phone"><a href="tel:028-668 37077">028-668 37077</a></li>
+                                            <li class="fa-fax">028-377 10132</li>
+                                            <li class="fa-envelope"><a href="mailto:info@toanthangship.com">info@toanthangship.com</a>
+                                            </li>
+                                            <li class="fa-map-marker"><a href="lien-he.html#ext_maps">Xem bản đồ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                            <div class="boxBot">
+                                <div class="title">Về ToànThắng</div>
+                                <div class="content">
+                                    <div class="botLink">
+                                        <ul>
+                                            <li><a href="gioi-thieu.html" target="_self"><span>Giới thiệu</span></a>
+                                            </li>
+                                            <li><a href="tin-tuc.html" target="_self"><span>Tin tức</span></a></li>
+                                            <li><a href="lien-he.html" target="_self"><span>Liên hệ</span></a></li>
+                                            <li><a href="cost.html" target="_self"><span>Chi phí cảng phí</span></a>
+                                            </li>
+                                            <li><a href="dieu-khoan-su-dung.html" target="_self"><span>Điều khoản sử dụng</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                            <div class="boxBot">
+                                <div class="title">Dịch Vụ Chính</div>
+                                <div class="content">
+                                    <div class="botLink">
+                                        <ul>
+                                            <li><a href="lich-tau-mo.html" target="_self"><span>Lịch tàu mở</span></a>
+                                            </li>
+                                            <li><a href="lich-xep-hang.html"
+                                                   target="_self"><span>Lịch xếp hàng</span></a></li>
+                                            <li><a href="dich-vu.html" target="_self"><span>Dịch vụ chính</span></a>
+                                            </li>
+                                            <li><a href="thuong-mai.html" target="_self"><span>Thương mại</span></a>
+                                            </li>
+                                            <li><a href="doi-tau.html" target="_self"><span>Đội tàu</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                            <div class="boxBot">
+                                <div class="title">chúng tôi trên</div>
+                                <div class="content">
+                                    <div class="socialBot">
+                                        <ul>
+                                            <li class="fa-twitter"><a target="_blank" href="index-4.html">Twitter</a>
+                                            </li>
+                                            <li class="fa-facebook-square"><a target="_blank"
+                                                                              href="toanthangshipping.html">Facebook</a>
+                                            </li>
+                                            <li class="fa-google-plus-square"><a target="_blank" href="index-5.html">Google+</a>
+                                            </li>
+                                            <li class="fa-instagram"><a target="_blank"
+                                                                        href="index-6.html">Instagram</a></li>
+                                            <li class="fa-youtube-square"><a target="_blank" href="watch713f.html">Youtube</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="socialMobile">
+                        <ul>
+                            <li><a target="_blank" href="index-4.html"><i class="fa fa-twitter"></i></a></li>
+                            <li><a target="_blank" href="toanthangshipping.html"><i
+                                            class="fa fa-facebook-square"></i></a></li>
+                            <li><a target="_blank" href="index-5.html"><i class="fa fa-google-plus-square"></i></a></li>
+                            <li><a target="_blank" href="index-6.html"><i class="fa fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="watch713f.html"><i class="fa fa-youtube-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footerMid">
+                <div class="wrapper">
+                    <div class="formRecive">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="txt"><span class="hidden-sm hidden-xs"></span></div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <form action="#" name="formNewsletter" id="formNewsletter" method="post" action="#"
+                                      onsubmit="return registerMaillist(this);">
+                                    <input type="text" id="femail" name="femail" placeholder="Nhập email của bạn..."/>
+                                    <button type="submit" value="1">Gửi</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footerBot">
+                <div class="wrapper">
+                    <div class="wrap">
+                        <div class="botFoot">
+                            <div class="linking">
+                                <div class="txt">Liên kết:</div>
+                                <a href="lien-ket-huu-dung.html"><img src="lienket1.jpg" alt="Liên kết"/></a><a
+                                        href="lien-ket-huu-dung.html"><img src="lienket2.html" alt="Liên kết"/></a><a
+                                        href="lien-ket-huu-dung.html"><img src="lienket3.jpg" alt="Liên kết"/></a><a
+                                        href="index.html"><img src="evw4k8bhlrn7tw8jotmizw.jpg"
+                                                               alt="ban quyen web"/></a>
+                            </div>
+                            <ul class='box_statistics'>
+                                <li class="fa-bar-chart"> : <b id='stats_totals'>1993</b></li>
+                                <li class="fa-group">Đang online : <b id='stats_online'>26</b></li>
+                            </ul>
+                            <div class="copyright">
+                                <div class="copy">Copyright © 2017-2020 <strong>TOANTHANG SHIPPING</strong></div>
+                                <div class="reserved">All right reserved.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#
+Keyboard navigation/accessibility link to main content section in
+page.html.twig.
+#}
+{# {{ page_top }} #}
+{# {{ page }} #}
+{# {{ page_bottom }} #}
+
+</body>
+</html>
