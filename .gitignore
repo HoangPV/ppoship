@@ -5,3 +5,4 @@ web/modules/contrib/*
 .idea/
 docker-compose.yml
 php/
+web/sites/default/settings.local.php
