@@ -1,3 +1,7 @@
 vendor/*
 web/sites/default/files/*
 web/modules/contrib/*
+.env
+.idea/
+docker-compose.yml
+php/
