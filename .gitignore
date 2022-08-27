@@ -1,2 +1,8 @@
 vendor/*
 web/sites/default/files/*
+web/modules/contrib/*
+.env
+.idea/
+docker-compose.yml
+php/
+web/sites/default/settings.local.php

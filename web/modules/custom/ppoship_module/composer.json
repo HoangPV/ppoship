@@ -1,0 +1,13 @@
+{
+    "name": "ppoship_module",
+    "type": "drupal-module",
+    "description": "PPOSHIP Drupal 9 Module",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/ppoship_module",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/ppoship_module",
+        "source": "http://cgit.drupalcode.org/ppoship_module",
+    },
+}

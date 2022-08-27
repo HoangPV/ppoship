@@ -1,0 +1,5 @@
+name: 'ppoship_module'
+type: module
+description: 'PPOSHIP Drupal 9 Module'
+package: 'Ppoship'
+core_version_requirement: ^9.2 || ^10
