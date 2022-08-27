@@ -1,0 +1,31 @@
+global-styling:
+  version: 1.x
+  js:
+    js/jquery.min.js: {}
+    js/query-migrate.min.js: {}
+    js/style.js: {}
+    js/jquery.fancybox.js: {}
+    js/core.js: {}
+    js/jquery.lazyscrollloading.js: {}
+    js/waypoints.min.js: {}
+    js/jquery.counterup.min.js: {}
+    js/mnfixed.js: {}
+    js/frontend.js: {}
+    js/script.js: {}
+  css:
+    theme:
+      css/bootstrap.min.css: {}
+      css/font-awesome.min.css: {}
+      css/screen.css: {}
+      css/calendar.css: {}
+      css/jquery.alerts.css: {}
+      css/slick.css: {}
+      css/menumobile.css: {}
+      css/jquery.fancybox.css: {}
+      css/main.css: {}
+      css/lazyloading.css: {}
+      css/datepicker.css: {}
+      css/frontend.css: {}
+      css/style.css: {}
+
+
