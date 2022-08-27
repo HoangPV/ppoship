@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * Contains ppoship_module.module.
+ * @author Hoang Phan <ace@hoangphan.tech>
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ppoship_module_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ppoship_module module.
+    case 'help.page.ppoship_module':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('PPOSHIP Drupal 9 Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ppoship_module_theme() {
+  return [
+    'ppoship_module' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function ppoship_module_preprocess_html(&$variables)
+{
+  // Disable block page_title, primary_admin_action, search_form_wide, messages, primary_local_tasks, search_form_narrow
+  // account_menu, secondary_local_task, breadcrumb, help, main_menu, syndicate
+
+  if (isset($variables['page']['branding']['ppoship_theme_page_title'])) {
+    //$variables['page']['branding']['ppoship_theme_page_title']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_primary_admin_actions'])) {
+    //$variables['page']['branding']['ppoship_theme_primary_admin_actions']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_search_form_wide'])) {
+    //$variables['page']['branding']['ppoship_theme_search_form_wide']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_messages'])) {
+    //$variables['page']['branding']['ppoship_theme_messages']['#access'] = FALSE;
+  }
+
+  if(isset($variables['page']['branding']['ppoship_theme_primary_local_tasks'])) {
+    //$variables['page']['branding']['ppoship_theme_primary_local_tasks']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_search_form_narrow'])) {
+    //$variables['page']['branding']['ppoship_theme_search_form_narrow']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_account_menu'])) {
+    //$variables['page']['branding']['ppoship_theme_account_menu']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_secondary_local_tasks'])) {
+    //$variables['page']['branding']['ppoship_theme_secondary_local_tasks']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_breadcrumbs'])) {
+    //$variables['page']['branding']['ppoship_theme_breadcrumbs']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_help'])) {
+    //$variables['page']['branding']['ppoship_theme_help']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_main_menu'])) {
+    //$variables['page']['branding']['ppoship_theme_main_menu']['#access'] = FALSE;
+  }
+
+  if (isset($variables['page']['branding']['ppoship_theme_syndicate'])) {
+    //$variables['page']['branding']['ppoship_theme_syndicate']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ppoship_module_preprocess_block(&$variables)
+{
+  // Alter block block-ppoship-theme-site-branding
+  if (isset($variables['elements']['#id']) && $variables['elements']['#id'] === 'ppoship_theme_site_branding') {
+    $variables['attributes']['class'][] = 'logo';
+  }
+}
