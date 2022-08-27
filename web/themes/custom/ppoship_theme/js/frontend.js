@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  console.log('hello world')
   $(".searchTop .icon").click(function(){
     if(!$(this).parents(".searchTop").hasClass("active")){
       $(this).parents(".searchTop").addClass("active");

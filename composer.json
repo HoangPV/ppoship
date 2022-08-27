@@ -21,6 +21,7 @@
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/devel": "^4.1",
+        "drupal/fontawesome": "^2.23",
         "kint-php/kint": "^4.1"
     },
     "conflict": {

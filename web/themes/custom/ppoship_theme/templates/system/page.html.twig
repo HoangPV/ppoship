@@ -1,26 +1,286 @@
-<header aria-label="Site header" class="header" id="header" role="banner">
-    {{ page.branding }}
-    {{ page.navigation }}
-    {{ page.search }}
-</header>
-<section class="featured" id="featured" role="complementary">
-    {{ page.featured }}
-</section>
-<section class="main" id="main">
-    <main aria-label="Site main content" class="content" id="content" role="main">
+<div id="vnt-wrapper">
+  <div id="vnt-container">
+    <div id="vnt-header">
+      <div class="wrapper">
+        {{ page.branding.ppoship_theme_site_branding }}
+        <div class="headerTools">
+          <div class="rowHeader hidden-sm hidden-xs">
+            {{ page.branding.hotro247 }}
+            {{ page.branding.giolamviec }}
+            {{ page.branding.email }}
+            {{ page.branding.dutinhpda }}
+          </div>
+          <div class="rowHeader hidden-sm hidden-xs">
+            {{ page.branding.ppoship_theme_main_menu }}
+            <div class="searchTop">
+              <div class="icon"><span class="iconSFrm">
+                                <i class="fa fa-search"></i>
+                                <i class="fa fa-times"></i>
+                            </span>
+              </div>
+              <div class="popup">
+                <script>
+                  function check_search(f) {
+                    var key_default = "Từ khóa";
+                    var keyword = f.keyword.value;
+                    var key_len = f.keyword.value.length;
+                    if ((keyword == key_default) || (keyword == '')) {
+                      alert("Vui lòng nhập từ khóa");
+                      f.keyword.focus();
+                      return false;
+                    }
+                    if (key_len < 2) {
+                      alert("Từ khóa tới thiểu là 2 ký tự");
+                      f.keyword.focus();
+                      return false;
+                    }
+                    return true;
+                  }
+                </script>
+                <form id="formSearch" name="formSearch" method="GET"
+                      action="https://www.toanthangship.com/vn/tim-kiem.html/"
+                      onSubmit="return check_search(this);" class="box_search">
+                  <input name="keyword" id="keyword" type="text" class="text_search" value=""
+                         placeholder="Từ khóa"/>
+                  <button type="submit">
+                    <span><i class="ic-search fa fa-search"></i></span>
+                  </button>
+                </form>
+                <div class="ajax_search"></div>
+          </div>
+        </div>
+          </div>
+          <div class="languageMobile hidden-lg hidden-md">
+            <div class="icon"><img src="flag-en.jpg" alt="English"><a
+                href="javascript:;"><span>en</span></a></div>
+          </div>
+          <div class="menu_mobile hidden-lg hidden-md">
+            <div class="icon_menu">Menu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="vnt-content">
+      <div class="wrapper">
         {{ page.content }}
-    </main>
-    <aside class="right--sidebar" id="sidebar" role="complementary">
-        {{ page.right_sidebar }}
-    </aside>
-</section>
-<footer aria-label="Site footer" class="footer" id="footer" role="contentinfo">
-    <div class="footer--top">
-        {{ page.footer_first }}
-        {{ page.footer_second }}
-        {{ page.footer_third }}
+      </div>
     </div>
-    <div class="footer--bottom">
-        {{ page.footer_bottom }}
+    <div id="vnt-footer">
+      <div class="footerMain">
+        <div class="wrapper">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              {# Footer first #}
+              {{ page.footer_first }}
+              {# Footer first #}
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+              {# Footer second #}
+              {{ page.footer_second }}
+              {# Footer second #}
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+              {# Footer third #}
+              {{ page.footer_third }}
+              {# Footer third #}
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+              {# Footer fourth #}
+              {{ page.footer_fourth }}
+              {# Footer fourth #}
+            </div>
+          </div>
+          <div class="socialMobile">
+            <ul>
+              <li><a target="_blank" href="index-4.html"><i class="fa fa-twitter"></i></a></li>
+              <li><a target="_blank" href="toanthangshipping.html"><i
+                    class="fa fa-facebook-square"></i></a></li>
+              <li><a target="_blank" href="index-5.html"><i class="fa fa-google-plus-square"></i></a></li>
+              <li><a target="_blank" href="index-6.html"><i class="fa fa-instagram"></i></a></li>
+              <li><a target="_blank" href="watch713f.html"><i class="fa fa-youtube-square"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footerMid">
+        <div class="wrapper">
+          <div class="formRecive">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="txt"><span class="hidden-sm hidden-xs"></span></div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <form action="#" name="formNewsletter" id="formNewsletter" method="post" action="#"
+                      onsubmit="return registerMaillist(this);">
+                  <input type="text" id="femail" name="femail" placeholder="Nhập email của bạn..."/>
+                  <button type="submit" value="1">Gửi</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {# Footer bottom #}
+      {{ page.footer_bottom }}
+      {# Footer bottom #}
     </div>
-</footer>
+  </div>
+</div>
+<div class="menu_mobile">
+  <div class="divmm">
+    <div class="mmContent">
+      <div class="mmMenu">
+        <ul>
+          <li class="current"><a href="index.html">Trang chủ</a></li>
+          <li><a href="gioi-thieu.html" target="_self">Giới thiệu</a></li>
+          <li><a href="dich-vu.html" target="_self">Dịch vụ</a>
+            <ul>
+              <li><a href="van-tai-bien-hang-roi-hang-xa.html" target="_self"><span>Vận tải biển hàng rời, hàng xá</span></a>
+              </li>
+              <li><a href="thue-tau-moi-gioi-hang-hai.html" target="_self"><span>Thuê tàu, môi giới hàng hải</span></a>
+              </li>
+              <li><a href="dai-ly-hang-hai.html" target="_self"><span>Đại lý hàng hải</span></a></li>
+              <li><a href="dich-vu-logistics-du-an.html" target="_self"><span>Dịch vụ logistics</span></a>
+              </li>
+              <li><a href="khai-thac-quan-ly-tau.html" target="_self"><span>Khai thác, quản lý tàu</span></a>
+              </li>
+              <li><a href="dich-vu-mua-ban-tau-bien.html"
+                     target="_self"><span>Dịch vụ mua bán tàu biển</span></a></li>
+              <li><a href="mua-ban-hang-nong-san.html"
+                     target="_self"><span>Mua bán hàng nông sản</span></a></li>
+              <li><a href="van-chuyen-hang-di-campuchia.html" target="_self"><span>Vận chuyển hàng đi Campuchia</span></a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="lich-tau-mo.html" target="_self">LỊCH TÀU MỞ</a></li>
+          <li><a href="lich-xep-hang.html" target="_self">LỊCH XẾP HÀNG</a></li>
+          <li><a href="thuong-mai.html" target="_self">Thương mại</a></li>
+          <li><a href="tin-tuc.html" target="_self">Tin tức</a></li>
+          <li><a href="lien-he.html" target="_self">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div class="mmButton">
+        <a href="#">Dự Tính Cảng Phí</a>
+        <a class="b fancybox.ajax" href="load_ajax1b4d.html?do=support"><span>Hỗ trợ trực tuyến</span></a>
+        <div class="mmSearch">
+
+          <form id="formSearch" name="formSearch" method="GET"
+                action="https://www.toanthangship.com/vn/tim-kiem.html/" onSubmit="return check_search(this);"
+                class="box_search">
+            <div class="vhponsition-re">
+              <input name="keyword" id="keyword" type="text" class="text_search" value=""
+                     placeholder="Từ khóa"/>
+              <button id="btn-search" type="submit" value="Tìm"><span class="ic-search"><i
+                    class="fa fa-search"></i></span></button>
+            </div>
+          </form>
+          <div class="ajax_search"></div>
+      </div>
+    </div>
+      <div class="close-mmenu">
+        <i class="fa fa-times"></i>
+      </div>
+    </div>
+    <div class="divmmbg"></div>
+  </div>
+</div>
+<div class="popupLanguage">
+  <ul>
+    <li class='active'><a href="trang-chu.html"><span>Tiếng Việt</span><img src="flag-vn.html"></a></li>
+    <li><a href="main-2.html"><span>English</span><img src="flag-en.jpg"></a></li>
+  </ul>
+</div>
+<a href="javascript:;" onclick="jQuery('html,body').animate({scrollTop: 0},1000);" class="go_top hidden-lg hidden-md"
+   style="" rel="nofollow"></a>
+<div class="menuAffix">
+  <ul>
+    <li class="ha"><a href="javascript:;" rel="nofollow"><i class="fa fa-phone"></i></a>
+      <div class="wrapHotlineAffix">
+        <div class="hotlineAffix">
+          <div class="d_title">Hotline</div>
+          <div class="w_hotline_content">
+            <div class="d_phone"><a href="tel:0963 211 311" title="">0963 211 311</a></div>
+            <div class="fh_support">
+              <div class="ss_contact"><span class="name">Ms Thùy </span>(Tư vấn - Hỏi đáp)</div>
+              <div class="ss_phone"><a href="tel:028-668 37077" title="">028-668 37077</a></div>
+              <div class="ss_social">
+                <ul>
+                  <li><a href="#" title=""><img alt="" src="icon-zalo.png"/></a></li>
+                  <li><a href="#" title=""><img alt="" src="icon-phone.png"/></a></li>
+                  <li><a href="skype:lethangitsb?chat" title=""><img alt="" src="icon-skype.html"/>
+                    </a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="d_note">
+              <div><a href="skype:lethangitsb?chat" title="">Bạn đang ghé thăm website bằng di động?</a>
+              </div>
+              <div><a href="skype:lethangitsb?chat" title="">Hãy bấm vào số điện thoại để gọi nhanh cho
+                  chúng tôi.</a></div>
+            </div>
+          </div>
+          <div class="d_close"><a href="javascript:void(0)" title="">Đóng <i class="fa fa-close"> </i></a>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li><a href="toanthangshipping.html" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
+    <li><a href="84963211311.html" target="_blank" rel="nofollow">
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg width="30px" height="15px" viewBox="0 0 25 9" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="xlink.html">
+          <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+          <title>Combined Shape</title>
+          <desc>Created with Sketch.</desc>
+          <defs></defs>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M12.6808693,2.52045104 L12.6808693,2.06398482 L14.048117,2.06398482 L14.048117,8.48239004 L13.2659151,8.48239004 C12.9439124,8.48239004 12.6825323,8.22236344 12.6808772,7.90080374 C12.6806605,7.90096172 12.6804438,7.90111968 12.6802271,7.90127761 C12.129539,8.30399226 11.448805,8.54305395 10.7134839,8.54305395 C8.87197018,8.54305395 7.37885092,7.05092395 7.37885092,5.21063028 C7.37885092,3.37033661 8.87197018,1.87820661 10.7134839,1.87820661 C11.448805,1.87820661 12.129539,2.1172683 12.6802271,2.51998295 C12.6804412,2.52013896 12.6806552,2.520295 12.6808693,2.52045106 Z M7.02456422,0 L7.02456422,0.20809598 C7.02456422,0.596210225 6.97270642,0.913087295 6.72048165,1.28483624 L6.68997706,1.31965261 C6.63490826,1.38206536 6.50566514,1.52871125 6.44417431,1.60829152 L2.05488532,7.11746011 L7.02456422,7.11746011 L7.02456422,7.89737882 C7.02456422,8.22051321 6.76238532,8.48235796 6.4390367,8.48235796 L0,8.48235796 L0,8.11462011 C0,7.66425356 0.11190367,7.46337756 0.253348624,7.25399803 L4.93243119,1.46244785 L0.195068807,1.46244785 L0.195068807,0 L7.02456422,0 Z M15.7064427,8.48239004 C15.4375206,8.48239004 15.2188509,8.2638652 15.2188509,7.9952818 L15.2188509,3.20888173e-05 L16.6824289,3.20888173e-05 L16.6824289,8.48239004 L15.7064427,8.48239004 Z M21.0096009,1.83801536 C22.8639587,1.83801536 24.366711,3.34137645 24.366711,5.19290121 C24.366711,7.04603041 22.8639587,8.54939149 21.0096009,8.54939149 C19.1552431,8.54939149 17.6524908,7.04603041 17.6524908,5.19290121 C17.6524908,3.34137645 19.1552431,1.83801536 21.0096009,1.83801536 Z M10.7134839,7.17125701 C11.7971995,7.17125701 12.6754106,6.29362786 12.6754106,5.21063028 C12.6754106,4.12923714 11.7971995,3.25160799 10.7134839,3.25160799 C9.62976835,3.25160799 8.75155734,4.12923714 8.75155734,5.21063028 C8.75155734,6.29362786 9.62976835,7.17125701 10.7134839,7.17125701 Z M21.0096009,7.16796791 C22.0997385,7.16796791 22.9843716,6.283921 22.9843716,5.19290121 C22.9843716,4.10348586 22.0997385,3.21959939 21.0096009,3.21959939 C19.9178578,3.21959939 19.0348303,4.10348586 19.0348303,5.19290121 C19.0348303,6.283921 19.9178578,7.16796791 21.0096009,7.16796791 Z"
+                  id="Combined-Shape" fill="#ffffff"></path>
+          </g>
+        </svg>
+      </a></li>
+    <li><a href="skype:lethangitsb?chat" rel="nofollow"><i class="fa fa-skype"></i></a></li>
+    <li class="hidden"><a href="mailto:info@toanthangship.com "><i class="fa fa-envelope-o"></i></a></li>
+    <li class="sa"><a href="javascript:;" rel="nofollow"><i class="fa fa-share-alt"></i></a>
+      <div class="socialAffix">
+        <div class="txt">Chia sẻ qua</div>
+        <ul>
+          <li><a target="_blank" href="share03cc.html?url=https://www.toanthangship.com/vn/trang-chu.html"
+                 rel="nofollow"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank"
+                 href="identifieraf30.html?url=https://www.toanthangship.com/vn/trang-chu.html"
+                 rel="nofollow"><i class="fa fa-google"></i></a></li>
+          <li><a target="_blank" href="share5c27.html?url=https://www.toanthangship.com/vn/trang-chu.html"
+                 rel="nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-share-alt"></i></a></li>
+        </ul>
+      </div>
+    </li>
+    <li><a href="javascript:;" onclick="jQuery('html,body').animate({scrollTop: 0},1000);" rel="nofollow"><i
+          class="fa fa-arrow-up"></i></a></li>
+  </ul>
+</div>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      xfbml: true,
+      version: 'v6.0'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="101271064840644"
+     theme_color="#ffc300">
+</div>
