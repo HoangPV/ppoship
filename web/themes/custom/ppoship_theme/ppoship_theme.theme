@@ -1,3 +1,423 @@
 <?php
 
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function ppoship_theme_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state)
+{
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['contact_settings'] = [
+    '#type' => 'details',
+    '#title' => 'Contact us settings',
+    '#open' => true,
+    'company_name' => [
+      '#type' => 'textfield',
+      '#title' => t('Company Name'),
+      '#default_value' => theme_get_setting('company_name'),
+      '#description' => t("Please enter your company name."),
+    ],
+    'main_address' => [
+      '#type' => 'textfield',
+      '#title' => t('Address of head office'),
+      '#default_value' => theme_get_setting('main_address'),
+      '#description' => t("Please enter an Address of head office"),
+    ],
+    'main_telno' => [
+      '#type' => 'textfield',
+      '#title' => t('Head office phone number'),
+      '#default_value' => theme_get_setting('main_telno'),
+      '#description' => t("Please enter a Head office phone number"),
+    ],
+    'main_faxno' => [
+      '#type' => 'textfield',
+      '#title' => t('Head office Fax number'),
+      '#default_value' => theme_get_setting('main_faxno'),
+      '#description' => t("Please enter a Head office Fax number"),
+    ],
+    'main_mobile_number' => [
+      '#type' => 'textfield',
+      '#title' => t('Headquarters mobile phone number'),
+      '#default_value' => theme_get_setting('main_mobile_number'),
+      '#description' => t("Please enter a Headquarters mobile phone number"),
+    ],
+    'main_email' => [
+      '#type' => 'textfield',
+      '#title' => t('Head office email address'),
+      '#default_value' => theme_get_setting('main_email'),
+      '#description' => t("Please enter a Head office email address"),
+    ],
+    'main_map' => [
+      '#type' => 'textfield',
+      '#title' => t('Map of headquarters'),
+      '#default_value' => theme_get_setting('main_map'),
+      '#description' => t("Please enter a Map of headquarters"),
+    ]
+  ];
+
+  $form['branch_contact_settings'] = [
+    '#type' => 'details',
+    '#title' => 'Branch contact information',
+    '#open' => false,
+    'branch_office_address' => [
+      '#type' => 'textfield',
+      '#title' => t('Address of branch office'),
+      '#default_value' => theme_get_setting('branch_office_address'),
+      '#description' => t("Please enter an Address of branch office"),
+    ],
+    'branch_office_telno' => [
+      '#type' => 'textfield',
+      '#title' => t('Branch office phone number'),
+      '#default_value' => theme_get_setting('branch_office_telno'),
+      '#description' => t("Please enter a Branch office phone number"),
+    ],
+    'branch_office_faxno' => [
+      '#type' => 'textfield',
+      '#title' => t('Branch office Fax number'),
+      '#default_value' => theme_get_setting('branch_office_faxno'),
+      '#description' => t("Please enter a Branch office Fax number"),
+    ],
+    'branch_office_mobile_number' => [
+      '#type' => 'textfield',
+      '#title' => t('Headquarters mobile phone number'),
+      '#default_value' => theme_get_setting('branch_office_mobile_number'),
+      '#description' => t("Please enter a Headquarters mobile phone number"),
+    ],
+    'branch_office_email' => [
+      '#type' => 'textfield',
+      '#title' => t('Branch office email address'),
+      '#default_value' => theme_get_setting('branch_office_email'),
+      '#description' => t("Please enter a Branch office email address"),
+    ],
+    'branch_office_map' => [
+      '#type' => 'textfield',
+      '#title' => t('Map of headquarters'),
+      '#default_value' => theme_get_setting('branch_office_map'),
+      '#description' => t("Please enter a Map of headquarters"),
+    ]
+  ];
+
+  // Assign custom block id
+  $form['assign_custom_block'] = [
+    '#type' => 'details',
+    '#title' => 'Custom Block Assign',
+    '#open' => true,
+    'contact_text' => [
+      '#type' => 'textfield',
+      '#title' => t('Contact Text Block ID'),
+      '#default_value' => theme_get_setting('contact_text'),
+      '#description' => t("Please enter the block id of block Contact Text"),
+      '#default' => ''
+    ]
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ppoship_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  /** @var \Drupal\ppoship_module\CustomService $service */
+  $service = \Drupal::service('ppoship_module.common');
+  $blockContactTextId = $service->getBlockAssignId('contact_text');
+  $blockContactText = $service->getRenderedArrayCustomBlock((int)$blockContactTextId);
+  if ('contact_message_feedback_form' === $form_id) {
+    $form['#attributes']['class'][] = 'box_mid';
+    $companyName = theme_get_setting('company_name');
+    // Main office
+    $mainAddress = theme_get_setting('main_address');
+    $mainPhone = theme_get_setting('main_telno');
+    $mainFax = theme_get_setting('main_faxno');
+    $mainMobile = theme_get_setting('main_mobile_number');
+    $mainEmail = theme_get_setting('main_email');
+    $mainMap = theme_get_setting('main_map');
+    // Branch office
+    $branchAddress = theme_get_setting('branch_office_address');
+    $branchPhone = theme_get_setting('branch_office_telno');
+    $branchFax = theme_get_setting('branch_office_faxno');
+    $branchMobile = theme_get_setting('branch_office_mobile_number');
+    $branchEmail = theme_get_setting('branch_office_email');
+    $branchMap = theme_get_setting('branch_office_map');
+    $form['companyName'] = [
+      '#prefix' => '<div class="mid-title"><div class="titleL"><h1>',
+      '#suffix' => '</h1></div></div>',
+      '#markup' => Markup::create($companyName),
+      '#weight' => -100
+    ];
+    $tmpName = $form['field_name'];
+    $tmpEmail = $form['field_email'];
+    $tmpPhone = $form['field_phone'];
+    $tmpMessage = $form['message'];
+    $tmpActions = $form['actions'];
+    unset($form['field_name']);
+    unset($form['field_email']);
+    unset($form['field_phone']);
+    unset($form['message']);
+    unset($form['actions']);
+    // Render the HEADQUARTERS text
+    // wrap-info-contact
+    $form['midContent'] = [
+      '#prefix' => '<div class="mid-content">',
+      '#suffix' => '</div>',
+      '#weight' => -99,
+      'wrapInfoContact' => [
+        '#prefix' => '<div class="wrap-info-contact">',
+        '#suffix' => '</div>',
+        '#weight' => 1,
+        'infoContact' => [
+          '#prefix' => '<div class="info-contact">',
+          '#suffix' => '</div>',
+          '#weight' => 10,
+          'textHeadquarter' => [
+            '#prefix' => '<div class="title">',
+            '#suffix' => '</div>',
+            '#markup' => Markup::create(t('Headquarter')),
+          ],
+          'content' => [
+            '#prefix' => '<div class="content">',
+            '#suffix' => '</div>',
+            'address' => [
+              '#prefix' => '<div><div class="dib">',
+              '#suffix' => '</div></div>',
+              '#markup' => '<span class="per">A</span>' . ' : ' . Markup::create(t($mainAddress))
+            ],
+            'cellphone' => [
+              '#prefix' => '<div>',
+              '#suffix' => '</div>',
+              'phone' => [
+                '#prefix' => '<div class="dib">',
+                '#suffix' => '</div>',
+                '#markup' => '<span class="per">T</span>' . ' : ' . '<a href="tel:' . Markup::create($mainPhone) . '">' . Markup::create($mainPhone) . '</a>'
+              ],
+              'separate_1' => [
+                '#markup' => ' | '
+              ],
+              'fax' => [
+                '#prefix' => '<div class="dib">',
+                '#suffix' => '</div>',
+                '#markup' => '<span class="per">F</span>' . ' : ' . '<a href="tel:' . Markup::create($mainFax) . '">' . Markup::create($mainFax) . '</a>'
+              ],
+              'separate_2' => [
+                '#markup' => ' | '
+              ],
+              'mobile' => [
+                '#prefix' => '<div class="dib">',
+                '#suffix' => '</div>',
+                '#markup' => '<span class="per">M</span>' . ' : '
+                  . '<a href="tel:' . Markup::create($mainMobile) . '">' . Markup::create($mainMobile) . '</a>'
+              ]
+            ],
+            'email' => [
+              '#prefix' => '<div>',
+              '#suffix' => '</div>',
+              'emailAddress' => [
+                '#prefix' => '<div class="dib">',
+                '#suffix' => '</div>',
+                '#markup' => '<a href="tel:'
+                  . Markup::create($mainMobile) . '><span class="per">E</span> : </a>'
+                  . '<a href="mailto:' . Markup::create($mainEmail) . '">'
+                  . Markup::create($mainEmail) . '</a>'
+              ]
+            ],
+            'viewMapContact' => [
+              '#prefix' => '<div class="view-map-contact">',
+              '#suffix' => '</div>',
+              '#markup' => '<a href="#map6" onclick=""><span>' . t('View map') . '</span></a>'
+            ]
+          ]
+        ]
+      ]
+    ];
+
+    // CHI NHÁNH THÁI LAN
+    $form['midContent']['wrapInfoContact']['infoContactThai'] = [
+      '#prefix' => '<div class="info-contact">',
+      '#suffix' => '</div>',
+      '#weight' => 20,
+      'title' => [
+        '#prefix' => '<div class="title">',
+        '#suffix' => '</div>',
+        '#markup' => t('Thai branch')
+      ],
+      'content' => [
+        '#prefix' => '<div class="content">',
+        '#suffix' => '</div>',
+        'address' => [
+          '#prefix' => '<div>',
+          '#suffix' => '</div>',
+          'dib' => [
+            '#prefix' => '<div class="dib">',
+            '#suffix' => '</div>',
+            '#markup' => '<span class="per">A</span>' .
+              ' : ' . t($branchAddress)
+
+          ]
+        ],
+        'phone' => [
+          '#prefix' => '<div>',
+          '#suffix' => '</div>',
+          'dib_1' => [
+            '#prefix' => '<div class="dib">',
+            '#suffix' => '</div>',
+            '#markup' => '<span class="per">T</span> : <a href="tel:' .
+              $branchPhone .
+              '">' .
+              $branchPhone . '</a>'
+          ],
+          'separate_1' => [
+            '#markup' => ' | '
+          ],
+          'dib_2' => [
+            '#prefix' => '<div class="dib">',
+            '#suffix' => '</div>',
+            '#markup' => '<span class="per">F</span> : <a href="tel:' .
+              $branchFax .
+              '">' .
+              $branchFax . '</a>'
+          ]
+        ],
+        'email' => [
+          '#prefix' => '<div>',
+          '#suffix' => '</div>',
+          'dib' => [
+            '#prefix' => '<div class="dib">',
+            '#suffix' => '</div>',
+            '#markup' => '<a href="tel: ' . $branchMobile . '">
+                              <span class="per">E</span> : </a><a href="mailto:' .
+              $branchEmail . '">' .
+              $branchEmail . '</a>'
+          ]
+        ],
+        'viewMap' => [
+          '#prefix' => '<div class="view-map-contact">',
+          '#suffix' => '</div>',
+          '#markup' => '<a href="#map8" onclick=""><span>' . t('View map') . '</span></a>'
+        ]
+      ]
+    ];
+
+    // form-contact
+    $form['midContent']['form-contact'] = [
+      '#prefix' => '<div class="form-contact">',
+      '#suffix' => '</div>',
+      '#weight' => 2,
+      'row' => [
+        '#prefix' => '<div class="row">',
+        '#suffix' => '</div>',
+        'subRow' => [
+          '#prefix' => '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">',
+          '#suffix' => '</div>',
+          'formContact' => [
+            '#prefix' => '<div>',
+            '#suffix' => '</div>',
+            'formGroup_1' => [
+              '#prefix' => '<div class="form-group">',
+              '#suffix' => '</div>',
+              'textContact' => [
+                '#prefix' => '<div class="textContact">',
+                '#suffix' => '</div>',
+                'markup' => $blockContactText
+              ]
+            ],
+            'formGroup_2' => [
+              '#prefix' => '<div class="form-group">',
+              '#suffix' => '</div>',
+              'field_name' => $tmpName
+            ],
+            'formGroup_3' => [
+              '#prefix' => '<div class="form-group">',
+              '#suffix' => '</div>',
+              'field_email' => $tmpEmail
+            ],
+            'formGroup_4' => [
+              '#prefix' => '<div class="form-group">',
+              '#suffix' => '</div>',
+              'phone' => $tmpPhone
+            ],
+            'formGroup_5' => [
+              '#prefix' => '<div class="form-group">',
+              '#suffix' => '</div>',
+              'message' => $tmpMessage
+            ],
+            // Call To Action
+            'cta' => [
+              '#prefix' => '<div class="form-group">',
+              '#suffix' => '</div>',
+              'label' => [
+                '#prefix' => '<label>',
+                '#suffix' => '</label>'
+              ],
+              'colRight' => [
+                '#prefix' => '<div class="colRight">',
+                '#suffix' => '</div>',
+                'gridButton' => [
+                  '#prefix' => '<div class="gridButton">',
+                  '#suffix' => '</div>',
+                  'col' => [
+                    '#prefix' => '<div class="col">',
+                    '#suffix' => '</div>',
+                    'button' => $tmpActions
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ];
+
+    // Map
+    $form['midContent']['map-contact'] = [
+      '#prefix' => '<div class="map-contact">',
+      '#suffix' => '</div>',
+      '#weight' => 3,
+      'mcTab' => [
+        '#prefix' => '<div class="mc-tab hidden-lg hidden-md">',
+        '#suffix' => '</div>',
+        '#markup' => t('HEADQUARTERS'),
+        'listTab' => [
+          '#prefix' => '<ul class="list-tab">',
+          '#suffix' => '</ul>',
+          '#markup' => '<li class="active"><a href="#map6" onclick="load_maps(6,450,450);">' .
+            t('HEADQUARTERS') . '</a></li><li class=""><a href="#map8" onclick="load_maps(8,450,450);">' .
+            t('Thai branch') . '</a></li>'
+        ],
+        'content' => [
+          '#prefix' => '<div class="content" id="ext_maps">',
+          '#suffix' => '</div>',
+          '#markup' => '<iframe src="https://maps.google.com/maps?output=embed&amp;hl=vn&amp;q=10.73999624306864,106.69959928014826&amp;z=17" frameborder="0" style="border:0; width: 100% ; height: 450px" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'
+        ]
+      ]
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ppoship_theme_preprocess_page__contact(&$variables)
+{
+  $variables['#attached']['library'][] = 'ppoship_theme/contactpage-styling';
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function ppoship_theme_theme_suggestions_alter(array &$suggestions, array $variables, $hook)
+{
+  if (isset($variables['element']) && isset($variables['element']['#form_id'])) {
+    $formId = $variables['element']['#form_id'];
+    if ('contact_message_feedback_form' === $formId) {
+      if ($hook == 'form') {
+        array_unshift($suggestions, 'form__' . 'theme_override');
+      }
+    }
+  }
+}
+
 

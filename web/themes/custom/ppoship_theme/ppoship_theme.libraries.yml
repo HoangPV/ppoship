@@ -2,7 +2,7 @@ global-styling:
   version: 1.x
   js:
     js/jquery.min.js: {}
-    js/query-migrate.min.js: {}
+    js/jquery-migrate.min.js: {}
     js/style.js: {}
     js/jquery.fancybox.js: {}
     js/core.js: {}
@@ -27,5 +27,10 @@ global-styling:
       css/datepicker.css: {}
       css/frontend.css: {}
       css/style.css: {}
+contactpage-styling:
+  version: 1.x
+  css:
+    theme:
+      css/contact.css: {}
 
 
