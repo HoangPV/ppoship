@@ -1,0 +1,7 @@
+services:
+  logger.channel.ppoship_module:
+    parent: logger.channel_base
+    arguments: ['ppoship_module']
+  ppoship_module.common:
+    class: Drupal\ppoship_module\CustomService
+    arguments: ['@plugin.manager.block', '@renderer']
