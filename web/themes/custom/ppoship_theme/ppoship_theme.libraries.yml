@@ -32,5 +32,12 @@ contactpage-styling:
   css:
     theme:
       css/contact.css: {}
+newslist-styling:
+  version: 1.x
+  js:
+    js/script.js: {}
+  css:
+    theme:
+      css/news.css: {}
 
 
