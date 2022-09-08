@@ -1,0 +1,32 @@
+
+ppoship_module.about_controller_render:
+  path: '/ppoship_module/render/about'
+  defaults:
+    _controller: '\Drupal\ppoship_module\Controller\AboutController::render'
+    _title: 'ABOUT PPOSHIP'
+  requirements:
+    _permission: 'access content'
+
+ppoship_module.vision_controller_render:
+  path: '/ppoship_module/render/vision'
+  defaults:
+    _controller: '\Drupal\ppoship_module\Controller\VisionController::render'
+    _title: 'VISION & MISSION'
+  requirements:
+    _permission: 'access content'
+
+ppoship_module.corevalue_controller_render:
+  path: '/ppoship_module/render/corevalue'
+  defaults:
+    _controller: '\Drupal\ppoship_module\Controller\CoreValueController::render'
+    _title: 'OUR VALUES'
+  requirements:
+    _permission: 'access content'
+
+ppoship_module.culture_controller_render:
+  path: '/ppoship_module/render/culture'
+  defaults:
+    _controller: '\Drupal\ppoship_module\Controller\CultureController::render'
+    _title: 'COMPANY CULTURE'
+  requirements:
+    _permission: 'access content'

@@ -113,6 +113,48 @@ function ppoship_theme_form_system_theme_settings_alter(&$form, \Drupal\Core\For
       '#default_value' => theme_get_setting('contact_text'),
       '#description' => t("Please enter the block id of block Contact Text"),
       '#default' => ''
+    ],
+    'block_about' => [
+      '#type' => 'textfield',
+      '#title' => t('Block About us - Block ID'),
+      '#default_value' => theme_get_setting('block_about'),
+      '#description' => t("Please enter the block id of block Block About us"),
+      '#default' => ''
+    ],
+    'block_vision' => [
+      '#type' => 'textfield',
+      '#title' => t('Block ABOUT US/VISION - Block ID'),
+      '#default_value' => theme_get_setting('block_vision'),
+      '#description' => t("Please enter the block id of Block ABOUT US/VISION"),
+      '#default' => ''
+    ],
+    'block_corevalue' => [
+      '#type' => 'textfield',
+      '#title' => t('Block ABOUT US/CORE VALUE - Block ID'),
+      '#default_value' => theme_get_setting('block_corevalue'),
+      '#description' => t("Please enter the block id of Block ABOUT US/CORE VALUE"),
+      '#default' => ''
+    ],
+    'block_culture' => [
+      '#type' => 'textfield',
+      '#title' => t('Block ABOUT US/CULTURE - Block ID'),
+      '#default_value' => theme_get_setting('block_culture'),
+      '#description' => t("Please enter the block id of Block ABOUT US/CULTURE"),
+      '#default' => ''
+    ]
+  ];
+
+  // Assign Menu ID
+  $form['assign_menu'] = [
+    '#type' => 'details',
+    '#title' => t('Assign Menu'),
+    '#open' => true,
+    'about_topnav' => [
+      '#type' => 'textfield',
+      '#title' => t('About us Page \'s Top Menu Identity'),
+      '#default_value' => theme_get_setting('about_topnav'),
+      '#description' => t("Please enter the About us Page 's Top Menu Identity"),
+      '#default' => ''
     ]
   ];
 }
@@ -417,6 +459,14 @@ function ppoship_theme_preprocess_page__tin_tuc(&$variables)
  * Implements hook_preprocess_HOOK().
  */
 function ppoship_theme_preprocess_page__node(&$variables)
+{
+  $variables['#attached']['library'][] = 'ppoship_theme/newslist-styling';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ppoship_theme_preprocess_page__ppoship_module__render(&$variables)
 {
   $variables['#attached']['library'][] = 'ppoship_theme/newslist-styling';
 }
