@@ -60,12 +60,7 @@ $(document).ready(function(){
       $(".menuAffix ul li.ha").removeClass("active");
     }
   });
-  // SLIDE
-  $("#vnt-slide").slick({
-    speed:800,
-    autoplaySpeed:4000,
-    autoplay:true,
-  });
+
   // MMHOTLINE
   $(".mmButton a.b").fancybox({
     padding     : 0,
