@@ -126,3 +126,31 @@ function ppoship_module_preprocess_input__submit(&$variables)
     $variables['attributes']['class'][] = 'hide';
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ppoship_module_preprocess_field(&$variables)
+{
+  // Custom display of field link_2youtube
+  if (isset($variables['field_name']) && $variables['field_name'] === 'field_link_2youtube') {
+    if (isset($variables['items'][0])) {
+      $item =  $variables['items'][0];
+      $youtubeLink = $item['content']['#title'];
+      $variables['items'][0]['content'] = [
+        '#markup' => $youtubeLink
+      ];
+      // Get the video image
+      if (isset($variables['element']['#object'])) {
+        /** @var \Drupal\block_content\Entity\BlockContent $parent */
+        $parent = $variables['element']['#object'];
+        $variables['items'][0]['video_image'] = $parent->field_video_image->view([
+          'label' => 'hidden',
+          'settings' => [
+            'image_style' => 'video_thumb'
+          ]
+        ]);
+      }
+    }
+  }
+}
