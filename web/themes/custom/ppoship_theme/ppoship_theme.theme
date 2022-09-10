@@ -503,6 +503,9 @@ function ppoship_theme_theme_suggestions_views_view_alter(array &$suggestions, a
     if (($variables['view'])->id() ==='block_partner') {
       array_unshift($suggestions, 'views_view__' . 'partner');
     }
+    if (($variables['view'])->id() ==='testimonial') {
+      array_unshift($suggestions, 'views_view__' . 'testimonial');
+    }
   }
 }
 
