@@ -63,7 +63,9 @@
       {% endfor %}
   {% else %}
     {% for item in items %}
-      <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+      <a {{ attributes.addClass(classes, 'field__items') }} href="{{ item.custom_link }}">
+        <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+      </a>
     {% endfor %}
   {% endif %}
 {% else %}
@@ -73,7 +75,9 @@
     <div class="field__items">
       {% endif %}
       {% for item in items %}
-        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        <a {{ attributes.addClass(classes, 'field__items') }} href="{{ item.custom_link }}">
+          <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        </a>
       {% endfor %}
       {% if multiple %}
     </div>
