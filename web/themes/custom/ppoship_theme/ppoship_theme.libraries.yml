@@ -1,15 +1,6 @@
 global-styling:
   version: 1.x
   js:
-    js/jquery.min.js: {}
-    js/jquery-migrate.min.js: {}
-    js/style.js: {}
-    js/jquery.fancybox.js: {}
-    js/core.js: {}
-    js/jquery.lazyscrollloading.js: {}
-    js/waypoints.min.js: {}
-    js/jquery.counterup.min.js: {}
-    js/mnfixed.js: {}
     js/frontend.js: {}
     js/script.js: {}
   css:
@@ -19,14 +10,14 @@ global-styling:
       css/screen.css: {}
       css/calendar.css: {}
       css/jquery.alerts.css: {}
-      css/slick.css: {}
       css/menumobile.css: {}
-      css/jquery.fancybox.css: {}
       css/main.css: {}
       css/lazyloading.css: {}
       css/datepicker.css: {}
       css/frontend.css: {}
       css/style.css: {}
+  dependencies:
+    - core/jquery
 contactpage-styling:
   version: 1.x
   css:
@@ -39,5 +30,12 @@ newslist-styling:
   css:
     theme:
       css/news.css: {}
+partner-styling:
+  js:
+    js/partner.js: {}
+  dependencies:
+    - core/jquery
+    - slick/slick
+
 
 
