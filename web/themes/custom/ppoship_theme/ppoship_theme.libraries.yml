@@ -35,6 +35,7 @@ partner-styling:
     js/partner.js: {}
   dependencies:
     - core/jquery
+    - core/once
     - slick/slick
 
 
