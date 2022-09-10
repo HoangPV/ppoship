@@ -5,6 +5,7 @@ package: Other
 core_version_requirement: ^8 || ^9
 libraries:
     - ppoship_theme/global-styling
+    - ppoship_theme/partner-styling
 
 base theme: classy
 regions:
