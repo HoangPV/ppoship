@@ -26,6 +26,7 @@
         "drupal/search_api": "^1.25",
         "drupal/search_api_autocomplete": "^1.6",
         "drupal/simple_search_form": "^1.4",
+        "drupal/slick": "^2.6",
         "drupal/views_slideshow": "^4.8",
         "kint-php/kint": "^4.1"
     },
