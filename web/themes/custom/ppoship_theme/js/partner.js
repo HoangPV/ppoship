@@ -10,9 +10,9 @@
    });
  }
 
-  Drupal.behaviors.partner = {
+  Drupal.behaviors.myBehavior = {
     attach: function (context, settings) {
-      once('partner', '.view-block-partner .view-content', context).forEach(
+      once('myBehavior', '.view-block-partner .view-content', context).forEach(
         function (element) {
           doSlick(element);
         }
